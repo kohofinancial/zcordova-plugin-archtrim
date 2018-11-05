@@ -48,14 +48,16 @@ module.exports = function(context) {
     // unquote (remove trailing ")
     var projectName = myProj.getFirstTarget().firstTarget.name.substr(1);
     projectName = projectName.substr(0, projectName.length-1); //Removing the char " at beginning and the end.
-
+    
     var options = {};
     options['shellPath'] = '/bin/sh';
     options['shellScript'] = `
     
-    echo "Target architectures: $ARCHS"
+echo "Target architectures: $ARCHS"
+echo "Target build directory: $TARGET_BUILD_DIR"
 
-APP_PATH="${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
+APP_PATH="\${TARGET_BUILD_DIR}/\${WRAPPER_NAME}"
+
 
 find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
 do
