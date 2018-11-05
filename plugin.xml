@@ -7,6 +7,6 @@
     <keywords>cordova,arch</keywords>
 
     <platform name="ios">
-        <hook type="after_platform_add" src="runscript.js" />
+        <hook type="after_prepare" src="runscript.js" />
     </platform>
 </plugin>
